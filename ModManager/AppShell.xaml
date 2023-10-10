@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="ModManager.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ModManager"
+    Shell.FlyoutBehavior="Locked"
+    Shell.TabBarIsVisible="False"
+    FlyoutBackgroundColor="{StaticResource Use3}"
+    Shell.NavBarIsVisible="False">
+
+    <Shell.FlyoutHeader>
+        <VerticalStackLayout BackgroundColor="{StaticResource Use3}">
+            <Image Source="dotnet_bot.png" HeightRequest="100"></Image>
+            <BoxView HeightRequest="10" Color="Transparent"></BoxView>
+            <Label Text="SOTF Mod Manager" HorizontalOptions="Center"></Label>
+            <BoxView HeightRequest="10" Color="Transparent"></BoxView>
+        </VerticalStackLayout>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem Title="Mods" FlyoutDisplayOptions="AsMultipleItems" IsVisible="True">
+        <ShellContent
+            Title="Get Mods"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+
+        <ShellContent
+             Title="My Mods"
+             ContentTemplate="{DataTemplate local:InstalledMods}"
+             Route="InstalledMods" />
+
+        <ShellContent
+                 Title="Settings"
+                 ContentTemplate="{DataTemplate local:Settings}"
+                 Route="Settings" />
+
+    </FlyoutItem>
+</Shell>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ModManager.Settings"
+             Title="Settings">
+    <VerticalStackLayout BackgroundColor="{StaticResource Use2}">
+        <BoxView HeightRequest="20" Color="Transparent"></BoxView>
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Label Text="Game Directory" Margin="10, 0, 10, 0" FontSize="Small" VerticalTextAlignment="Center"></Label>
+            <Entry x:Name="GameDirectoryEntry" Text="" Margin="0, 0, 0, 0" MinimumWidthRequest="800"></Entry>
+            <Button x:Name="GameDirSaveButton" Text="Save" Margin="10, 0, 0, 0" MinimumWidthRequest="80" BackgroundColor="{StaticResource Gray500}" TextColor="{StaticResource White}" FontSize="18"></Button>
+        </HorizontalStackLayout>
+        
+        <BoxView HeightRequest="10" Color="Transparent"></BoxView>
+        <Line HeightRequest="1" BackgroundColor="{StaticResource Use4}" Margin="270, 0, 270, 0"></Line>
+        <BoxView HeightRequest="10" Color="Transparent"></BoxView>
+
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Label Text="Mods Directory" Margin="10, 0, 10, 0" FontSize="Small" VerticalTextAlignment="Center"></Label>
+            <Entry x:Name="ModDirectoryEntry" Text="" Margin="0, 0, 0, 0" MinimumWidthRequest="800"></Entry>
+            <Button x:Name="ModDirSaveButton" Text="Save" Margin="10, 0, 0, 0" MinimumWidthRequest="80" BackgroundColor="{StaticResource Gray500}" TextColor="{StaticResource White}" FontSize="18"></Button>
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>

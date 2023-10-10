@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ModManager.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            BackgroundColor="{StaticResource Use2}"
+            VerticalOptions="Center">
+
+            <CollectionView ItemsSource="{Binding Mods}" HorizontalOptions="Center">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" CornerRadius="10" BackgroundColor="{StaticResource Use4}" HorizontalOptions="CenterAndExpand">
+                            <Grid Padding="10" RowSpacing="15">
+                                <!-- Increased RowSpacing for more space between items -->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <!-- Added one more Row for the latest version -->
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <!-- Width of the image -->
+                                    <ColumnDefinition Width="600"/>
+                                    <!-- Remaining space for text and button -->
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Image -->
+                                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="4"
+                                   Source="{Binding Thumbnail_Url}"
+                                   HeightRequest="150" WidthRequest="250" 
+                                   Aspect="AspectFill" VerticalOptions="Start"/>
+
+                                <!-- Mod Name -->
+                                <Label Grid.Row="0" Grid.Column="1"
+                                       FontSize="Medium"
+                                     Text="{Binding Name}" 
+                                     FontAttributes="Bold" VerticalOptions="Start" Margin="10,0,0,0"/>
+
+
+                                <!-- User Name -->
+                                <Label Grid.Row="1" Grid.Column="1"
+                                       FontSize="Small"
+                                    Text="{Binding User_Name}" 
+                                    VerticalOptions="Start" Margin="10,0,0,0"/>
+
+                                <!-- Latest Version -->
+                                <Label Grid.Row="2" Grid.Column="1"
+                                        Text="{Binding Latest_Version}" 
+                                        VerticalOptions="Start" Margin="10,0,0,0"/>
+
+                                <!-- Description -->
+                                <!--<Label Grid.Row="1" Grid.Column="1"
+                                   Text="{Binding Short_Description}" 
+                                   VerticalOptions="Start"/>-->
+
+                                <!-- Download Button -->
+                                
+                                <Button Grid.Row="3" Grid.Column="1" WidthRequest="120"
+                                        Text="Install"
+                                        TextColor="White"
+                                        BackgroundColor="{StaticResource Gray600}"
+                                        BorderColor="DimGray"
+                                        FontSize="Medium"
+                                        Command="{Binding DownloadCommand}"
+                                        VerticalOptions="Start"/>
+                            </Grid>
+
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
