@@ -69,6 +69,12 @@
                                         FontSize="Medium"
                                         Command="{Binding DownloadCommand}"
                                         VerticalOptions="Start"/>
+                                
+                                <ProgressBar Grid.Row="4" Grid.Column="1" WidthRequest="120"
+                                     Progress="{Binding DownloadProgress}" 
+                                     HeightRequest="10" VerticalOptions="Start" />
+
+
                             </Grid>
 
                         </Frame>

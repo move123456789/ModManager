@@ -18,13 +18,13 @@ public partial class Settings : ContentPage
         CheckAndSetModPath();
     }
 
-    public string savedGameDir
+    internal static string savedGameDir
     {
         get { return Preferences.Get(nameof(savedGameDir), null); }
         set { Preferences.Set(nameof(savedGameDir), value); }
     }
 
-    public string savedModDir
+    internal static string savedModDir
     {
         get { return Preferences.Get(nameof(savedModDir), null); }
         set { Preferences.Set(nameof(savedModDir), value); }
