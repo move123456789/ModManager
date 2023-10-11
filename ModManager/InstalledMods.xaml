@@ -3,25 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ModManager.InstalledMods"
              Title="InstalledMods">
-    <!--<ScrollView--><!-->
-        <StackLayout x:Name="ModsStack">
-            <HorizontalStackLayout BackgroundColor="{StaticResource Use2}" HeightRequest="70" Margin="0, 0, 0, 0" Spacing="0" Padding="0" HorizontalOptions="Fill">
-                <Button Text="Refresh"
-                        TextColor="White"
-                        BackgroundColor="{StaticResource Gray600}"
-                        BorderColor="DimGray"
-                        FontSize="Medium"
-                        Margin="10, 0, 0, 0"
-                        HeightRequest="50"
-                        x:Name="RefreshButton"
-                ></Button>
-                <Label Text="My Mods" FontSize="Header" VerticalOptions="Center" Margin="100, 0, 0, 0"></Label>
-                
-            </HorizontalStackLayout>
-            
-            --><!-- Mod details will be added here programmatically --><!--
-        </StackLayout>
-    </ScrollView>-->
 
     <ScrollView>
         <StackLayout x:Name="ModsStack">
