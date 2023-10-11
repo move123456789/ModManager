@@ -26,20 +26,27 @@ namespace ModManager
 
         // Download Progress
         private double _downloadProgress = 0;
-        public double DownloadProgress
+
+        public string DownloadPercentageText
         {
-            get { return _downloadProgress; }
-            set
-            {
-                _downloadProgress = value;
-                OnPropertyChanged(); // Notify the UI of the change.
-            }
+            get { return $"{(DownloadProgress * 100):0}%"; }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public double DownloadProgress
+        {
+            get { return _downloadProgress; }
+            set
+            {
+                _downloadProgress = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(DownloadPercentageText)); // Notify change for the percentage text.
+            }
         }
 
 
