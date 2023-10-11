@@ -49,6 +49,17 @@ namespace ModManager
             }
         }
 
+        private bool _isDownloading = false;
+        public bool IsDownloading
+        {
+            get { return _isDownloading; }
+            set
+            {
+                _isDownloading = value;
+                OnPropertyChanged();
+            }
+        }
+
 
 
         // FOR DOWNLOADING
@@ -60,8 +71,22 @@ namespace ModManager
             Debug.WriteLine($"Clicked download for mod: {Name}");
             Debug.WriteLine($"API PATH: {apiPath}");
 
+            var destinationPath = Settings.savedModDir;
+
+            // 1. Check if the mod folder or DLL exists
+            if (Directory.Exists(Path.Combine(destinationPath, Name)) || File.Exists(Path.Combine(destinationPath, $"{Name}.dll")))
+            {
+                // 3. Display a warning
+                ShowWarning($"The mod '{Name}' or its DLL already exists. Download cancelled.");
+                DownloadProgress = 0;
+                IsDownloading = false;
+                return; // 2. Cancel the download if they exist
+            }
+
             try
             {
+                IsDownloading = true;
+
                 using (var httpClient = new HttpClient())
                 {
                     var fileBytes = await httpClient.GetByteArrayAsync(apiPath);
@@ -81,12 +106,19 @@ namespace ModManager
                     ZipFile.ExtractToDirectory(tempZipFilePath, tempExtractPath);
                     DownloadProgress = 0.66;
 
+                    // If files are inside a extre Mods folder
+                    var directories = Directory.GetDirectories(tempExtractPath);
+                    if (directories.Length == 1 && Path.GetFileName(directories[0]) == "Mods")
+                    {
+                        tempExtractPath = directories[0];
+                    }
+
+
                     // 4. Delete the zipped file
                     File.Delete(tempZipFilePath);
                     DownloadProgress = 0.70;
 
                     // 5. Move the contents of the unzipped folder to desired location
-                    var destinationPath = Settings.savedModDir;
                     foreach (var dirPath in Directory.GetDirectories(tempExtractPath, "*", SearchOption.AllDirectories))
                     {
                         Directory.CreateDirectory(dirPath.Replace(tempExtractPath, destinationPath));
@@ -100,16 +132,28 @@ namespace ModManager
                     DownloadProgress = 0.90;
                     Directory.Delete(tempExtractPath, true); // Clean up temp extraction directory
                     DownloadProgress = 1;
+
                 }
             } catch (Exception ex)
             {
                 Debug.WriteLine($"Error during download and installation: {ex.Message}");
                 //await DisplayAlert("Error", $"Error during download and installation: {ex.Message}", "OK");
                 DownloadProgress = 0;
+                ShowWarning("Mod Failed To Download");
+                IsDownloading = false;
             }
             
 
         }
+
+
+        public event Action<string> ShowWarningRequested;
+
+        private void ShowWarning(string message)
+        {
+            ShowWarningRequested?.Invoke(message);
+        }
+
     }
 
 

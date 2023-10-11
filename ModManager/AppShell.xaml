@@ -18,6 +18,20 @@
         </VerticalStackLayout>
     </Shell.FlyoutHeader>
 
+    <Shell.FlyoutFooter>
+        <HorizontalStackLayout BackgroundColor="{StaticResource Use3}">
+            <ImageButton Source="play_outline.png" HeightRequest="20" BackgroundColor="{StaticResource Use3}" Pressed="OnButtonPressed" Released="OnButtonReleased"/>
+            <Button Text="Modded Sons Of The Forest"
+                    BackgroundColor="{StaticResource Use3}"
+                    TextColor="White"
+                    FontSize="16"
+                    Pressed="OnButtonPressed"
+                    Released="OnButtonReleased"
+                    BorderColor="{StaticResource Use3}"
+                    ></Button>
+        </HorizontalStackLayout>
+    </Shell.FlyoutFooter>
+
     <FlyoutItem Title="Mods" FlyoutDisplayOptions="AsMultipleItems" IsVisible="True">
         <ShellContent
             Title="Get Mods"
@@ -33,10 +47,6 @@
                  Title="Settings"
                  ContentTemplate="{DataTemplate local:Settings}"
                  Route="Settings" />
-        <ShellContent
-         Title="TEST PAGE"
-         ContentTemplate="{DataTemplate local:TestPage}"
-         Route="TestPage" />
 
     </FlyoutItem>
 </Shell>

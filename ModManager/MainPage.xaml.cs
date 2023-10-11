@@ -24,6 +24,7 @@ namespace ModManager
         private void OnDownloadClicked(object sender, EventArgs e)
         {
             var imageUrl = (sender as Button).CommandParameter.ToString();
+
             // Handle the download action using the imageUrl or other necessary information
         }
 
@@ -53,6 +54,7 @@ namespace ModManager
                         Mods.Clear();
                         foreach (var mod in apiResponse.Mods)
                         {
+                            mod.ShowWarningRequested += DisplayWarning;
                             Mods.Add(mod);
                         }
                     }
@@ -71,6 +73,31 @@ namespace ModManager
             }
         }
 
+
+        private void OnButtonPressed(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            if (button != null)
+            {
+                button.Scale = 0.8;
+            }
+        }
+
+        private void OnButtonReleased(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            if (button != null)
+            {
+                button.Scale = 1;
+            }
+        }
+
+        private void DisplayWarning(string message)
+        {
+            // Use your platform-specific code to show the warning.
+            // For instance, in MAUI:
+            this.DisplayAlert("Warning", message, "OK");
+        }
 
     }
 }

@@ -33,9 +33,9 @@ public partial class InstalledMods : ContentPage
 
     private async Task LoadFoldersAndManifests()
     {
-        string directoryPath = GenericFunctions.GetModDir();
+        string directoryPath = Settings.savedModDir;
 
-        if (Directory.Exists(directoryPath) && GenericFunctions.GetModDir() != null)
+        if (Directory.Exists(directoryPath) && Settings.savedModDir != null)
         {
             var folders = Directory.GetDirectories(directoryPath);
 

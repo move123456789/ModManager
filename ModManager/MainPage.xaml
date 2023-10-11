@@ -9,84 +9,66 @@
             Padding="30,0"
             BackgroundColor="{StaticResource Use2}"
             VerticalOptions="Center">
-
+            <Frame WidthRequest="500">
+                <Label Text="RedLoader - Sons Of The Forest Mods" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" ></Label>
+            </Frame>
             <CollectionView ItemsSource="{Binding Mods}" HorizontalOptions="Center">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame Padding="10" CornerRadius="10" BackgroundColor="{StaticResource Use4}" HorizontalOptions="CenterAndExpand">
-                            <Grid Padding="10" RowSpacing="15">
-                                <!-- Increased RowSpacing for more space between items -->
+                        <Frame BackgroundColor="{StaticResource Use1}" Margin="10, 0, 10, 0" HeightRequest="150" WidthRequest="1200">
+                            <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <!-- Added one more Row for the latest version -->
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <!-- Width of the image -->
-                                    <ColumnDefinition Width="600"/>
-                                    <!-- Remaining space for text and button -->
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-
-                                <!-- Image -->
-                                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="4"
-                                   Source="{Binding Thumbnail_Url}"
-                                   HeightRequest="150" WidthRequest="250" 
-                                   Aspect="AspectFill" VerticalOptions="Start"/>
-
-                                <!-- Mod Name -->
-                                <Label Grid.Row="0" Grid.Column="1"
-                                       FontSize="Medium"
-                                     Text="{Binding Name}" 
-                                     FontAttributes="Bold" VerticalOptions="Start" Margin="10,0,0,0"/>
-
-
-                                <!-- User Name -->
-                                <Label Grid.Row="1" Grid.Column="1"
-                                       FontSize="Small"
-                                    Text="{Binding User_Name}" 
-                                    VerticalOptions="Start" Margin="10,0,0,0"/>
-
-                                <!-- Latest Version -->
-                                <Label Grid.Row="2" Grid.Column="1"
-                                        Text="{Binding Latest_Version}" 
-                                        VerticalOptions="Start" Margin="10,0,0,0"/>
-
-                                <!-- Description -->
-                                <!--<Label Grid.Row="1" Grid.Column="1"
-                                   Text="{Binding Short_Description}" 
-                                   VerticalOptions="Start"/>-->
-
-                                <!-- Download Button -->
-                                
-                                <Button Grid.Row="3" Grid.Column="1" WidthRequest="120"
+                                <Image Source="{Binding Thumbnail_Url}" Grid.Column="0" Grid.Row="1" HeightRequest="130" MinimumHeightRequest="130" Margin="0, 0, 0, 0">
+                                </Image>
+                                <Label Text="{Binding Name}" Grid.Column="1" Grid.Row="0" FontSize="20"></Label>
+                                <Label Text="{Binding User_Name}" Grid.Column="1" Grid.Row="1"></Label>
+                                <Label Text="{Binding Latest_Version}" Grid.Column="1" Grid.Row="3"></Label>
+                                <Button
+                                        Grid.Column="2" Grid.Row="1"
                                         Text="Install"
+                                        VerticalOptions="Center"
+                                        WidthRequest="120"
+                                        MinimumHeightRequest="20"
+                                        FontSize="16"
                                         TextColor="White"
                                         BackgroundColor="{StaticResource Gray600}"
-                                        BorderColor="DimGray"
-                                        FontSize="Medium"
-                                        Command="{Binding DownloadCommand}"
-                                        VerticalOptions="Start"/>
+                                        BorderColor="{StaticResource Gray600}"
+                                        Pressed="OnButtonPressed"
+                                        Released="OnButtonReleased"
+                                        Command="{Binding DownloadCommand}">
+                                    <Button.Shadow>
+                                        <Shadow Radius="10" Brush="#000000" Opacity="0.6" Offset="0, 0"/>
+                                    </Button.Shadow>
+
+                                </Button>
 
                                 <!-- Progress Percentage Label -->
-                                <Label Grid.Row="4" Grid.Column="1" 
-                                       Text="{Binding DownloadPercentageText}" 
-                                       VerticalOptions="Start" HorizontalOptions="Start" 
-                                       Margin="0,10,0,0"/>
+                                <Label Grid.Row="0" Grid.Column="4" 
+                                     Text="{Binding DownloadPercentageText}" 
+                                       HorizontalTextAlignment="Center"
+                                       FontSize="20"
+                                       VerticalOptions="Start"
+                                       IsVisible="{Binding IsDownloading}"
+                                     Margin="0,10,0,0"/>
 
                                 <!-- Updated ProgressBar -->
-                                <ProgressBar Grid.Row="4" Grid.Column="1" 
+                                <ProgressBar Grid.Row="1" Grid.Column="4" 
                                      Progress="{Binding DownloadProgress}" 
                                      HeightRequest="20" 
-                                     VerticalOptions="Start" HorizontalOptions="End" 
-                                     Margin="40,10,0,0" WidthRequest="200" />
-
-
-
+                                     ProgressColor="LightGreen"
+                                     IsVisible="{Binding IsDownloading}"
+                                     Margin="0,0,0,0" WidthRequest="300" />
                             </Grid>
-
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
