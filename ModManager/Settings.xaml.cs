@@ -32,22 +32,20 @@ public partial class Settings : ContentPage
 
     private void CheckAndSetGamePath()
     {
-        //if (GenericFunctions.GetGameDir() == null)
-        //{
-        //    GameDirectoryEntry.Text = "Game Directory Not Found, Please Enter";
-        //    DisplayAlert("Alert", "Game Directory Not Found, Please Enter", "OK");
-        //    Debug.WriteLine("Game Directory Not Found, Please Enter");
-        //} else
-        //{
-        //    GameDirectoryEntry.Text = GenericFunctions.GetGameDir();
-        //    Debug.WriteLine($"Game Directory Found: {GenericFunctions.GetGameDir()}");
-        //}
-
         if (string.IsNullOrEmpty(savedGameDir))
         {
-            GameDirectoryEntry.Text = "Game Directory Not Found, Please Enter";
-            DisplayAlert("Alert", "Game Directory Not Found, Please Enter", "OK");
-            Debug.WriteLine("Game Directory Not Found, Please Enter");
+            if (GenericFunctions.GetGameDir() != null)
+            {
+                GameDirectoryEntry.Text = GenericFunctions.GetGameDir();
+                savedGameDir = GenericFunctions.GetGameDir();
+                Debug.WriteLine("savedGameDir was null, but GameDir Standard location was found, and are now set");
+            }
+            else
+            {
+                GameDirectoryEntry.Text = "Game Directory Not Found, Please Enter";
+                DisplayAlert("Alert", "Game Directory Not Found, Please Enter", "OK");
+                Debug.WriteLine("Game Directory Not Found, Please Enter");
+            }
         }
         else
         {
@@ -58,22 +56,20 @@ public partial class Settings : ContentPage
 
     private void CheckAndSetModPath()
     {
-        //if (GenericFunctions.GetModDir() == null)
-        //{
-        //    ModDirectoryEntry.Text = "Mod Directory Not Found, Are You Sure RedLoader Is Installed?";
-        //    DisplayAlert("Alert", "Mod Directory Not Found, Are You Sure RedLoader Is Installed?", "OK");
-        //    Debug.WriteLine("Mod Directory Not Found, Are You Sure RedLoader Is Installed?");
-        //}
-        //else
-        //{
-        //    ModDirectoryEntry.Text = GenericFunctions.GetModDir();
-        //    Debug.WriteLine($"Game Directory Found: {GenericFunctions.GetModDir()}");
-        //}
         if (string.IsNullOrEmpty(savedModDir))
         {
-            ModDirectoryEntry.Text = "Mod Directory Not Found, Are You Sure RedLoader Is Installed?";
-            DisplayAlert("Alert", "Mod Directory Not Found, Are You Sure RedLoader Is Installed?", "OK");
-            Debug.WriteLine("Mod Directory Not Found, Are You Sure RedLoader Is Installed?");
+            if (GenericFunctions.GetModDir() != null)
+            {
+                ModDirectoryEntry.Text = GenericFunctions.GetModDir();
+                savedModDir = GenericFunctions.GetModDir();
+                Debug.WriteLine("savedModDir was null, but ModDir Standard location was found, and are now set");
+            }
+            else
+            {
+                ModDirectoryEntry.Text = "Mod Directory Not Found, Are You Sure RedLoader Is Installed?";
+                DisplayAlert("Alert", "Mod Directory Not Found, Are You Sure RedLoader Is Installed?", "OK");
+                Debug.WriteLine("Mod Directory Not Found, Are You Sure RedLoader Is Installed?");
+            }
         }
         else
         {
@@ -86,7 +82,6 @@ public partial class Settings : ContentPage
     {
         // Your code to execute when the button is clicked
         Debug.WriteLine("Save button clicked!");
-        GenericFunctions.gameDir = GameDirectoryEntry.Text;
         savedGameDir = GameDirectoryEntry.Text;
         DisplayAlert("Note", "Game Directory Saved", "OK");
 
@@ -96,30 +91,8 @@ public partial class Settings : ContentPage
     {
         // Your code to execute when the button is clicked
         Debug.WriteLine("Save button clicked!");
-        GenericFunctions.modDir = ModDirectoryEntry.Text;
+        savedGameDir = GameDirectoryEntry.Text;
         DisplayAlert("Note", "Mod Directory Saved", "OK");
 
     }
-
-    //public async Task LoadSaveSettings()
-    //{
-    //    if (settingsService == null)
-    //    {
-    //        Debug.WriteLine("settingsService is null!");
-    //        return;
-    //    }
-
-    //    savedGameDir = await settingsService.Get<string>(nameof(savedGameDir), null);
-    //    savedModDir = await settingsService.Get<string>(nameof(savedModDir), null);
-
-    //    Debug.WriteLine($"LoadSaveSettings SaveGameDir: {savedGameDir}");
-    //    Debug.WriteLine($"LoadSaveSettings SaveModDir: {savedModDir}");
-    //}
-
-    //public async Task SaveSettings()
-    //{
-    //    await settingsService.Save(nameof(savedGameDir), savedGameDir);
-    //    await settingsService.Save(nameof(savedModDir), savedModDir);
-    //    await DisplayAlert("Saved!", "Settings has been saved!", "OK");
-    //}
 }
