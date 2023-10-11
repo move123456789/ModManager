@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ModManager.TestPage"
+             Title="TestPage">
+    <VerticalStackLayout>
+        <Frame BackgroundColor="{StaticResource Use1}" Margin="10, 0, 10, 0" HeightRequest="150">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Image Source="test_image.png" Grid.Column="0" Grid.Row="1" HeightRequest="130" MinimumHeightRequest="130" Margin="0, 0, 0, 0">
+                </Image>
+                <Label Text="MOD_NAME" Grid.Column="1" Grid.Row="0" FontSize="20"></Label>
+                <Label Text="by MOD_DEVELOPER" Grid.Column="1" Grid.Row="1"></Label>
+                <Label Text="Version 1.0.0" Grid.Column="1" Grid.Row="3"></Label>
+                <Button
+                    Grid.Column="2" Grid.Row="1"
+                    Text="Install"
+                    VerticalOptions="Center"
+                    WidthRequest="120"
+                    MinimumHeightRequest="20"
+                    FontSize="16"
+                    TextColor="White"
+                    BackgroundColor="{StaticResource Gray600}"
+                    BorderColor="{StaticResource Gray600}"
+                    Pressed="OnButtonPressed"
+                    Released="OnButtonReleased">
+                    <Button.Shadow>
+                        <Shadow Radius="10" Brush="#000000" Opacity="0.6" Offset="0, 0"/>
+                    </Button.Shadow>
+                    
+                </Button>
+                
+                <!-- Progress Percentage Label -->
+                <Label Grid.Row="0" Grid.Column="4" 
+                     Text="100%" 
+                       HorizontalTextAlignment="Center"
+                       FontSize="20"
+                       VerticalOptions="Start"
+                     Margin="0,10,0,0"/>
+
+                <!-- Updated ProgressBar -->
+                <ProgressBar Grid.Row="1" Grid.Column="4" 
+                     Progress="{Binding DownloadProgress}" 
+                     HeightRequest="20" 
+                     ProgressColor="LightGreen"
+                     Margin="0,0,0,0" WidthRequest="300" />
+            </Grid>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>

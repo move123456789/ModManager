@@ -33,6 +33,10 @@
                  Title="Settings"
                  ContentTemplate="{DataTemplate local:Settings}"
                  Route="Settings" />
+        <ShellContent
+         Title="TEST PAGE"
+         ContentTemplate="{DataTemplate local:TestPage}"
+         Route="TestPage" />
 
     </FlyoutItem>
 </Shell>
