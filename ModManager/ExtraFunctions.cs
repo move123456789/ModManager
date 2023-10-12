@@ -29,8 +29,16 @@ namespace ModManager
 
         public string DownloadPercentageText
         {
-            get { return $"{(DownloadProgress * 100):0}%"; }
+            get
+            {
+                if (_downloadProgress >= 1)
+                {
+                    return "Complete";
+                }
+                return $"{(_downloadProgress * 100):0}%";
+            }
         }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -59,7 +67,6 @@ namespace ModManager
                 OnPropertyChanged();
             }
         }
-
 
 
         // FOR DOWNLOADING
