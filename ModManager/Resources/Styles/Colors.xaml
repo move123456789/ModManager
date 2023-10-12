@@ -21,12 +21,21 @@
     <!--<Color x:Key="Use2">#41607e</Color>
     <Color x:Key="Use3">#26394b</Color>
     <Color x:Key="Use4">#0c1318</Color>-->
-    <Color x:Key="Use1">#91171F</Color>
+    <!--<Color x:Key="Use1">#91171F</Color>
     <Color x:Key="Use2">#421820 </Color>
     <Color x:Key="Use3">#BA1F33</Color>
     <Color x:Key="Use4">#CD5D67</Color>
-    <Color x:Key="Use5">#410B13</Color>
+    <Color x:Key="Use5">#410B13</Color>-->
+
+    <Color x:Key="Use1">#2b2d42</Color>
+    <Color x:Key="Use2">#8d99ae</Color>
+    <Color x:Key="Use3">#edf2f4</Color>
+    <Color x:Key="Use4">#457b9d</Color>
+    <Color x:Key="Use5">#d90429</Color>
+    <Color x:Key="FlyoutColor">#4a4e69</Color>
+    <Color x:Key="FlyoutHeaderColor">#33415c</Color>
     
+
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
     <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}"/>

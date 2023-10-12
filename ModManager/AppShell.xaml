@@ -6,11 +6,11 @@
     xmlns:local="clr-namespace:ModManager"
     Shell.FlyoutBehavior="Locked"
     Shell.TabBarIsVisible="False"
-    FlyoutBackgroundColor="{StaticResource Use3}"
+    FlyoutBackgroundColor="{StaticResource FlyoutColor}"
     Shell.NavBarIsVisible="False">
 
     <Shell.FlyoutHeader>
-        <VerticalStackLayout BackgroundColor="{StaticResource Use3}">
+        <VerticalStackLayout BackgroundColor="{StaticResource FlyoutHeaderColor}">
             <Image Source="dotnet_bot.png" HeightRequest="100"></Image>
             <BoxView HeightRequest="10" Color="Transparent"></BoxView>
             <Label Text="SOTF Mod Manager" HorizontalOptions="Center"></Label>
@@ -18,16 +18,18 @@
         </VerticalStackLayout>
     </Shell.FlyoutHeader>
 
-    <Shell.FlyoutFooter>
-        <HorizontalStackLayout BackgroundColor="{StaticResource Use3}">
-            <ImageButton Source="play_outline.png" HeightRequest="20" BackgroundColor="{StaticResource Use3}" Pressed="OnButtonPressed" Released="OnButtonReleased"/>
-            <Button Text="Modded Sons Of The Forest"
-                    BackgroundColor="{StaticResource Use3}"
+    <Shell.FlyoutFooter BackgroundColor="{StaticResource FlyoutColor}">
+        <HorizontalStackLayout BackgroundColor="{StaticResource FlyoutColor}" HorizontalOptions="Center" Margin="0, 0, 0, 10">
+            <!--<ImageButton Source="play_outline.png" HeightRequest="20" BackgroundColor="{StaticResource Use3}" Pressed="OnButtonPressed" Released="OnButtonReleased"/>-->
+            <Button Text="Play Modded Sons Of The Forest"
+                    BackgroundColor="{StaticResource FlyoutHeaderColor}"
                     TextColor="White"
                     FontSize="16"
                     Pressed="OnButtonPressed"
                     Released="OnButtonReleased"
-                    BorderColor="{StaticResource Use3}"
+                    BorderColor="{StaticResource Use1}"
+                    HorizontalOptions="Center"
+                    Margin="0, 0, 0, 0"
                     ></Button>
         </HorizontalStackLayout>
     </Shell.FlyoutFooter>

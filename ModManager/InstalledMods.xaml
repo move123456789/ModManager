@@ -5,22 +5,24 @@
              Title="InstalledMods">
 
     <ScrollView>
-        <StackLayout x:Name="ModsStack">
-            <HorizontalStackLayout BackgroundColor="{StaticResource Use2}" HeightRequest="70" Margin="0, 0, 0, 0" Spacing="0" Padding="0" HorizontalOptions="Fill">
+        <StackLayout x:Name="ModsStack" BackgroundColor="{StaticResource Use1}">
+            <HorizontalStackLayout BackgroundColor="{StaticResource Use4}" HeightRequest="70" Margin="0, 0, 0, 0" Spacing="0" Padding="0" HorizontalOptions="Fill">
                         <Button Text="Refresh"
                                 TextColor="White"
                                 BackgroundColor="{StaticResource Gray600}"
-                                BorderColor="DimGray"
+                                BorderColor="{StaticResource Gray900}"
                                 FontSize="Medium"
                                 Margin="10, 0, 0, 0"
                                 HeightRequest="50"
                                 x:Name="RefreshButton"
+                                Pressed="OnButtonPressed"
+                                Released="OnButtonReleased"
                         ></Button>
-                        <Label Text="My Mods" FontSize="Header" VerticalOptions="Center" Margin="100, 0, 0, 0"></Label>
+                        <Label Text="My Mods" FontSize="30" VerticalOptions="Center" Margin="50, 0, 0, 0"></Label>
                     </HorizontalStackLayout>
 
             <!-- Placeholder for mod details -->
-            <StackLayout x:Name="ModDetailsStack">
+            <StackLayout x:Name="ModDetailsStack" BackgroundColor="{StaticResource Use1}">
                 <!-- Mod details will be added here programmatically -->
             </StackLayout>
         </StackLayout>

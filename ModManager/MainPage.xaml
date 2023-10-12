@@ -7,7 +7,7 @@
         <VerticalStackLayout
             Spacing="25"
             Padding="30,0"
-            BackgroundColor="{StaticResource Use2}"
+            BackgroundColor="{StaticResource Use1}"
             VerticalOptions="Center">
             <Frame WidthRequest="500">
                 <Label Text="RedLoader - Sons Of The Forest Mods" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" ></Label>
@@ -15,7 +15,7 @@
             <CollectionView ItemsSource="{Binding Mods}" HorizontalOptions="Center">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BackgroundColor="{StaticResource Use1}" Margin="10, 0, 10, 0" HeightRequest="150" WidthRequest="1200">
+                        <Frame BackgroundColor="{StaticResource Use4}" Margin="10, 0, 10, 0" HeightRequest="150" WidthRequest="1200">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>

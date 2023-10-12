@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ModManager.Settings"
              Title="Settings">
-    <VerticalStackLayout BackgroundColor="{StaticResource Use2}">
+    <VerticalStackLayout BackgroundColor="{StaticResource Use1}">
         <BoxView HeightRequest="20" Color="Transparent"></BoxView>
         <HorizontalStackLayout HorizontalOptions="Center">
             <Label Text="Game Directory" Margin="10, 0, 10, 0" FontSize="Small" VerticalTextAlignment="Center"></Label>

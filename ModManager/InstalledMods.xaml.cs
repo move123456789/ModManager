@@ -59,9 +59,10 @@ public partial class InstalledMods : ContentPage
                     var modDetails = new StackLayout
                     {
                         Orientation = StackOrientation.Horizontal,
+                        
                         Children =
                     {
-                        new Label { Text = $"Folder: {folderName}", WidthRequest = 150, VerticalOptions = LayoutOptions.Center },
+                        new Label { Text = $"{folderName}", WidthRequest = 150, VerticalOptions = LayoutOptions.Center },
                         new Label { Text = $"Author: {manifest.Author}", WidthRequest = 150, VerticalOptions = LayoutOptions.Center },
                         new Label { Text = $"Version: {manifest.Version}", WidthRequest = 100, VerticalOptions = LayoutOptions.Center }
                     }
@@ -71,11 +72,12 @@ public partial class InstalledMods : ContentPage
                     var modButtons = new StackLayout
                     {
                         Orientation = StackOrientation.Horizontal,
+                        Margin = new Thickness(0, 10, 10, 10),
                         Children =
                     {
-                        new Button { Text = "Enable", IsVisible = !dllExists, Command = new Command(() => EnableMod(dllOldPath)) },
-                        new Button { Text = "Disable", IsVisible = dllExists, Command = new Command(() => DisableMod(dllPath)) },
-                        new Button { Text = "Uninstall", Command = new Command(() => UninstallMod(folderName)) }
+                        new Button { Text = "Enable", IsVisible = !dllExists, Command = new Command(() => EnableMod(dllOldPath)), BackgroundColor = Color.FromArgb("#2b2d42"), TextColor = Color.FromArgb("#edf2f4")  },
+                        new Button { Text = "Disable", IsVisible = dllExists, Command = new Command(() => DisableMod(dllPath)), BackgroundColor = Color.FromArgb("#2b2d42"), TextColor = Color.FromArgb("#edf2f4") },
+                        new Button { Text = "Uninstall", Command = new Command(() => UninstallMod(folderName)), BackgroundColor = Color.FromArgb("#2b2d42"), TextColor = Color.FromArgb("#edf2f4") }
                     }
                     };
 
@@ -89,7 +91,9 @@ public partial class InstalledMods : ContentPage
                         CornerRadius = 10,
                         Padding = 10,
                         Margin = new Thickness(10, 5),
-                        VerticalOptions = LayoutOptions.Start
+                        VerticalOptions = LayoutOptions.Start,
+                        WidthRequest = 800,
+                        BackgroundColor = Color.FromArgb("#457b9d"),
                     };
 
                     ModDetailsStack.Children.Add(modFrame);
@@ -136,6 +140,24 @@ public partial class InstalledMods : ContentPage
         ModDetailsStack.Children.Clear();
         doTaskFromNotAsync();
         Debug.WriteLine("My Mods Refreshed");
+    }
+
+    private void OnButtonPressed(object sender, EventArgs e)
+    {
+        var button = sender as Button;
+        if (button != null)
+        {
+            button.Scale = 0.8;
+        }
+    }
+
+    private void OnButtonReleased(object sender, EventArgs e)
+    {
+        var button = sender as Button;
+        if (button != null)
+        {
+            button.Scale = 1;
+        }
     }
 
 }
