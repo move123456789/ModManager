@@ -9,24 +9,12 @@ namespace ModManager
             InitializeComponent();
         }
 
-        private bool IsProcessRunning(string processName)
-        {
-            foreach (var process in Process.GetProcesses())
-            {
-                if (process.ProcessName.Equals(processName, StringComparison.OrdinalIgnoreCase))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
         private void OnButtonPressed(object sender, EventArgs e)
         {
             var button = sender as Button;
             if (button != null)
             {
-                button.BackgroundColor = Color.FromHex("#91171F");
+                button.BackgroundColor = Color.FromArgb("#91171F");
             }
         }
 
@@ -35,7 +23,7 @@ namespace ModManager
             var button = sender as Button;
             if (button != null)
             {
-                button.BackgroundColor = Color.FromHex("#BA1F33");
+                button.BackgroundColor = Color.FromArgb("#BA1F33");
             }
             
 

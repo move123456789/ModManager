@@ -73,6 +73,12 @@ namespace ModManager
 
             var destinationPath = Settings.savedModDir;
 
+            if (Directory.Exists(destinationPath) == false || Settings.savedModDir == null)
+            {
+                ShowWarning("Mod Directory Not Found, Please Goto Settings");
+                Debug.WriteLine("Mod Directory Not Found, Please Goto Settings");
+            }
+
             // 1. Check if the mod folder or DLL exists
             if (Directory.Exists(Path.Combine(destinationPath, Name)) || File.Exists(Path.Combine(destinationPath, $"{Name}.dll")))
             {

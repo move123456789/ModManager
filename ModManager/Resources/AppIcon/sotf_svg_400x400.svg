@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 141.111px;
+        fill: #2aa9d3;
+      }
+
+      .cls-1, .cls-2 {
+        font-family: "Headliner No. 45";
+      }
+
+      .cls-2 {
+        font-size: 84.667px;
+        fill: #fe3a3e;
+      }
+    </style>
+  </defs>
+  <text id="SOTF" class="cls-1" x="16.132" y="184.605">SOTF</text>
+  <text id="MOD" class="cls-2" x="214.693" y="184.71">MOD</text>
+  <text id="MANAGER" class="cls-1" x="18.588" y="317.324">MANAGER</text>
+</svg>

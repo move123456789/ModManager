@@ -77,7 +77,7 @@ public partial class InstalledMods : ContentPage
                     {
                         new Button { Text = "Enable", IsVisible = !dllExists, Command = new Command(() => EnableMod(dllOldPath)), BackgroundColor = Color.FromArgb("#2b2d42"), TextColor = Color.FromArgb("#edf2f4")  },
                         new Button { Text = "Disable", IsVisible = dllExists, Command = new Command(() => DisableMod(dllPath)), BackgroundColor = Color.FromArgb("#2b2d42"), TextColor = Color.FromArgb("#edf2f4") },
-                        new Button { Text = "Uninstall", Command = new Command(() => UninstallMod(folderName)), BackgroundColor = Color.FromArgb("#2b2d42"), TextColor = Color.FromArgb("#edf2f4") }
+                        new Button { Text = "Uninstall", Command = new Command(() => UninstallMod(directoryPath, folderName)), BackgroundColor = Color.FromArgb("#2b2d42"), TextColor = Color.FromArgb("#edf2f4") }
                     }
                     };
 
@@ -134,9 +134,32 @@ public partial class InstalledMods : ContentPage
         Debug.WriteLine("My Mods Refreshed");
     }
 
-    private void UninstallMod(string dllPath)
+    private void UninstallMod(string directoryPath, string folderName)
     {
-        // Logic to uninstall the mod
+        var dllOldPath = Path.Combine(directoryPath, folderName + ".old");
+        var dllPath = Path.Combine(directoryPath, folderName + ".dll");
+        var pdbPath = Path.Combine(directoryPath, folderName + ".pdb");
+        var folderPath = Path.Combine(directoryPath, folderName);
+
+        if (File.Exists(dllOldPath))
+        {
+            File.Delete(dllOldPath);
+        }
+        if (File.Exists(dllPath))
+        {
+            File.Delete(dllPath);
+        }
+        if (File.Exists(pdbPath))
+        {
+            File.Delete(pdbPath);
+        }
+        if (Directory.Exists(folderPath))
+        {
+            Directory.Delete(folderPath, true);
+        }
+        Debug.WriteLine("Deleted Mod");
+
+
         ModDetailsStack.Children.Clear();
         doTaskFromNotAsync();
         Debug.WriteLine("My Mods Refreshed");

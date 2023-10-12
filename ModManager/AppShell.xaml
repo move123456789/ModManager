@@ -11,10 +11,10 @@
 
     <Shell.FlyoutHeader>
         <VerticalStackLayout BackgroundColor="{StaticResource FlyoutHeaderColor}">
-            <Image Source="dotnet_bot.png" HeightRequest="100"></Image>
-            <BoxView HeightRequest="10" Color="Transparent"></BoxView>
-            <Label Text="SOTF Mod Manager" HorizontalOptions="Center"></Label>
-            <BoxView HeightRequest="10" Color="Transparent"></BoxView>
+            <Image Source="sotf500x300.png" HeightRequest="150"></Image>
+            <!--<BoxView HeightRequest="0" Color="Transparent"></BoxView>-->
+            <!--<Label Text="SOTF Mod Manager" HorizontalOptions="Center"></Label>-->
+            <!--<BoxView HeightRequest="10" Color="Transparent"></BoxView>-->
         </VerticalStackLayout>
     </Shell.FlyoutHeader>
 
