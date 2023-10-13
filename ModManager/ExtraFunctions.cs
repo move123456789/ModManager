@@ -82,8 +82,10 @@ namespace ModManager
 
             if (Directory.Exists(destinationPath) == false || Settings.savedModDir == null)
             {
+
                 ShowWarning("Mod Directory Not Found, Please Goto Settings");
                 Debug.WriteLine("Mod Directory Not Found, Please Goto Settings");
+                return;
             }
 
             // 1. Check if the mod folder or DLL exists
@@ -180,7 +182,8 @@ namespace ModManager
     {
         public static void StartUpFunctions()
         {
-
+            CheckAndSetGamePath();
+            CheckAndSetModPath();
         }
 
         public static string GetGameDir()
@@ -236,6 +239,48 @@ namespace ModManager
             {
                 Debug.WriteLine("Mod directory does not exist.");
                 return false;
+            }
+        }
+
+        private static void CheckAndSetGamePath()
+        {
+            if (string.IsNullOrEmpty(Settings.savedGameDir))
+            {
+                if (GenericFunctions.GetGameDir() != null)
+                {
+                    Settings.savedGameDir = GenericFunctions.GetGameDir();
+                    Debug.WriteLine("savedGameDir was null, but GameDir Standard location was found, and are now set");
+                }
+                else
+                {
+                    Debug.WriteLine("Game Directory Not Found, Please Enter");
+                    Application.Current.MainPage.DisplayAlert("WARNING", "Game Directory Not Found, Please Go To Settings", "OK");
+                }
+            }
+            else
+            {
+                Debug.WriteLine($"Game Directory Found: {Settings.savedGameDir}");
+            }
+        }
+
+        private static void CheckAndSetModPath()
+        {
+            if (string.IsNullOrEmpty(Settings.savedModDir))
+            {
+                if (GenericFunctions.GetModDir() != null)
+                {
+                    Settings.savedModDir = GenericFunctions.GetModDir();
+                    Debug.WriteLine("savedModDir was null, but ModDir Standard location was found, and are now set");
+                }
+                else
+                {
+                    Debug.WriteLine("Mod Directory Not Found, Are You Sure RedLoader Is Installed?");
+                    Application.Current.MainPage.DisplayAlert("WARNING", "Mod Directory Not Found, Please Go To Settings", "OK");
+                }
+            }
+            else
+            {
+                Debug.WriteLine($"Mod Directory Found: {Settings.savedModDir}");
             }
         }
 

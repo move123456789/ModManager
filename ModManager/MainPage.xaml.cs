@@ -23,6 +23,7 @@ namespace ModManager
             BindingContext = this;
             LoadDataAsync(); // Call the asynchronous method here.
             GenericFunctions.StartUpFunctions();
+            
         }
 
         private void OnDownloadClicked(object sender, EventArgs e)
