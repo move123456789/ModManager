@@ -6,6 +6,8 @@ namespace ModManager
 {
     public partial class MainPage : ContentPage
     {
+        private List<Mod> _originalMods = new List<Mod>();
+
         private ObservableCollection<Mod> _mods = new ObservableCollection<Mod>();
         public ObservableCollection<Mod> Mods
         {
@@ -52,11 +54,14 @@ namespace ModManager
                     if (apiResponse?.Mods != null)
                     {
                         Mods.Clear();
+                        _originalMods.Clear();
                         foreach (var mod in apiResponse.Mods)
                         {
                             mod.ShowWarningRequested += DisplayWarning;
-                            Mods.Add(mod);
+                            //Mods.Add(mod);
+                            _originalMods.Add(mod);
                         }
+                        Mods = new ObservableCollection<Mod>(_originalMods);
                     }
                     else
                     {
@@ -98,6 +103,25 @@ namespace ModManager
             // For instance, in MAUI:
             this.DisplayAlert("Warning", message, "OK");
         }
+
+        private void OnSearchBarTextChanged(object sender, TextChangedEventArgs e)
+        {
+            var searchTerm = e.NewTextValue;
+
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+                // Reset to the original mod list
+                Mods = new ObservableCollection<Mod>(_originalMods);
+            }
+            else
+            {
+                // Filter the mod list
+                var filteredMods = _originalMods.Where(mod => mod.Name.ToLower().Contains(searchTerm.ToLower())).ToList();
+                Mods = new ObservableCollection<Mod>(filteredMods);
+            }
+        }
+
+
 
     }
 }

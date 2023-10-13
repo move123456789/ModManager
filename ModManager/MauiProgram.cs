@@ -15,18 +15,18 @@ namespace ModManager
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-            builder.ConfigureLifecycleEvents(lifecycle =>
-            {
-                lifecycle.AddWindows(windows =>
-                {
-                    windows.OnWindowCreated(xamlWindow =>
-                    {
-                        var window = xamlWindow as MauiWinUIWindow;
+            //builder.ConfigureLifecycleEvents(lifecycle =>
+            //{
+            //    lifecycle.AddWindows(windows =>
+            //    {
+            //        windows.OnWindowCreated(xamlWindow =>
+            //        {
+            //            var window = xamlWindow as MauiWinUIWindow;
 
-                        window.ExtendsContentIntoTitleBar = true; 
-                    });
-                });
-            });
+            //            window.ExtendsContentIntoTitleBar = true; 
+            //        });
+            //    });
+            //});
 
             builder.Logging.AddDebug();
 
