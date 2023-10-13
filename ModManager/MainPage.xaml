@@ -12,6 +12,9 @@
             <Frame WidthRequest="500">
                 <Label Text="RedLoader - Sons Of The Forest Mods" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" ></Label>
             </Frame>
+            <Frame WidthRequest="500">
+                <Label Text="RedLoader - Sons Of The Forest Mods" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" ></Label>
+            </Frame>
             <CollectionView ItemsSource="{Binding Mods}" HorizontalOptions="Center">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
