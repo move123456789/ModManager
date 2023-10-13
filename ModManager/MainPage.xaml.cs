@@ -15,6 +15,8 @@ namespace ModManager
             set { _mods = value; OnPropertyChanged(); }
         }
 
+        public record ModInstalledMessage();
+
         public MainPage()
         {
             InitializeComponent();

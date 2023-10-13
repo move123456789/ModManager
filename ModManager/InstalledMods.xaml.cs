@@ -1,5 +1,7 @@
 using System.Diagnostics;
 using System.Text.Json;
+using Microsoft.Maui.Controls;
+
 
 namespace ModManager;
 
