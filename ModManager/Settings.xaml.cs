@@ -91,7 +91,7 @@ public partial class Settings : ContentPage
     {
         // Your code to execute when the button is clicked
         Debug.WriteLine("Save button clicked!");
-        savedGameDir = GameDirectoryEntry.Text;
+        savedModDir = GameDirectoryEntry.Text;
         DisplayAlert("Note", "Mod Directory Saved", "OK");
 
     }

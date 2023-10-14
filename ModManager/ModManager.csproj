@@ -40,8 +40,8 @@
 		<GenerateTestArtifacts>True</GenerateTestArtifacts>
 		<AppInstallerUri>c:\temp\</AppInstallerUri>
 		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-		<DefaultLanguage>en-US</DefaultLanguage>
-		<NeutralLanguage>en-US</NeutralLanguage>
+		<DefaultLanguage>en-us</DefaultLanguage>
+		<NeutralLanguage>en-us</NeutralLanguage>
 	</PropertyGroup>
 
 	<ItemGroup>
