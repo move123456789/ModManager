@@ -24,6 +24,8 @@ namespace ModManager
 
         public string Latest_Version { get; set; }
 
+        public string Mod_Id { get; set; }
+
         // Download Progress
         private double _downloadProgress = 0;
 
@@ -74,7 +76,7 @@ namespace ModManager
 
         private async void OnDownloadClicked()
         {
-            string apiPath = $"https://api.sotf-mods.com/api/mods/{User_Slug}/{Slug}/download/{Latest_Version}";
+            string apiPath = $"https://api.sotf-mods.com/api/mods/{Mod_Id}/download/{Latest_Version}";
             Debug.WriteLine($"Clicked download for mod: {Name}");
             Debug.WriteLine($"API PATH: {apiPath}");
 
